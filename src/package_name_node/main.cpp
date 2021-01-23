@@ -18,13 +18,9 @@
 
 #include <package_name/package_name_node.h>
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char *argv[]) {
   ros::init(argc, argv, "package_name_node");
-
-  PackageNameNode node;
-
+  package_name::PackageNameNode node;
   ros::spin();
-
   return 0;
 }

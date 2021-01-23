@@ -4,8 +4,16 @@ project(package_name)
 add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
+  diagnostic_updater
+  dynamic_reconfigure
   roscpp
   std_msgs
+)
+# find_package(Boost REQUIRED)
+# find_package(Eigen3 REQUIRED)
+
+generate_dynamic_reconfigure_options(
+  cfg/PackageName.cfg
 )
 
 catkin_package(
@@ -13,11 +21,15 @@ catkin_package(
     include
   CATKIN_DEPENDS
     std_msgs
+    diagnostic_updater
+    dynamic_reconfigure
 )
 
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  # ${Boost_INCLUDE_DIRS}
+  # ${EIGEN3_INCLUDE_DIRS}
 )
 
 # Target
@@ -30,11 +42,14 @@ add_executable(package_name_node
 
 target_link_libraries(package_name_node
   ${catkin_LIBRARIES}
+  # ${Eigen3_LIBRARIES}
+  # ${Boost_LIBRARIES}
 )
 
 add_dependencies(package_name_node
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
   ${catkin_EXPORTED_TARGETS}
+  ${PROJECT_NAME}_gencfg
 )
 
 # Install

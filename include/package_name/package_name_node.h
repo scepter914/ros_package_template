@@ -13,24 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 #pragma once
 
 #include <memory>
 
+#include <dynamic_reconfigure/server.h>
 #include <ros/ros.h>
+#include <std_msgs/Float32.h>
+#include <std_msgs/Header.h>
+// #include <diagnostic_updater/diagnostic_updater.h>
 
-#include <std_msgs/Bool.h>
-
+#include <package_name/PackageNameConfig.h>
 #include <package_name/package_name.h>
 
-struct PackageNameNodeParam
-{
+namespace package_name {
+
+struct PackageNameNodeParam {
   double update_rate;
+  double th_timeout;
 };
 
-class PackageNameNode
-{
+class PackageNameNode {
 public:
   PackageNameNode();
 
@@ -43,23 +46,37 @@ private:
   ros::Subscriber sub_data_;
 
   // Data Buffer
-  std_msgs::Bool::ConstPtr data_;
+  std_msgs::Float32::ConstPtr data_hoge;
+  std_msgs::Header::ConstPtr data_header;
 
   // Callback
-  void onData(const std_msgs::Bool::ConstPtr & msg);
+  void onData(const std_msgs::Float32::ConstPtr &msg);
+  void onHeader(const std_msgs::Header::ConstPtr &msg);
 
   // Publisher
   ros::Publisher pub_data_;
 
   // Timer
   ros::Timer timer_;
-
   bool isDataReady();
-  void onTimer(const ros::TimerEvent & event);
+  bool isDataTimeout();
+  void onTimer(const ros::TimerEvent &event);
 
   // Parameter
   PackageNameNodeParam node_param_;
+  PackageNameParam core_param_;
+
+  // Dynamic Reconfigure
+  void onConfig(const PackageNameConfig &config, const uint32_t level);
+  dynamic_reconfigure::Server<PackageNameConfig> dynamic_reconfigure_;
 
   // Core
+  PackageNameInput input_;
+  PackageNameOutput output_;
   std::unique_ptr<PackageName> package_name_;
+
+  // Diagnostic Updater
+  // diagnostic_updater::Updater diagnostic_updater_;
+  // void checkError(diagnostic_updater::DiagnosticStatusWrapper & stat);
 };
+} // namespace package_name

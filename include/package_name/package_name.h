@@ -16,22 +16,27 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
+namespace package_name {
 
-#include <boost/optional.hpp>
-
-struct PackageNameParam
-{
+struct PackageNameParam {
+  float param_hoge;
 };
 
-class PackageName
-{
-public:
-  explicit PackageName(const PackageNameParam & param);
+struct PackageNameInput {
+  float input_hoge;
+};
 
-  void update();
+struct PackageNameOutput {
+  float output_hoge;
+};
+
+class PackageName {
+public:
+  void setParam(const PackageNameParam &param);
+  PackageNameOutput update(const PackageNameInput &input);
 
 private:
   PackageNameParam param_;
 };
+
+} // namespace package_name
