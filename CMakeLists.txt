@@ -35,9 +35,9 @@ include_directories(
 # Target
 ## package_name_node
 add_executable(package_name_node
-  src/package_name_node/main.cpp
-  src/package_name_node/package_name.cpp
-  src/package_name_node/package_name_node.cpp
+  src/package_name/main.cpp
+  src/package_name/package_name.cpp
+  src/package_name/package_name_node.cpp
 )
 
 target_link_libraries(package_name_node

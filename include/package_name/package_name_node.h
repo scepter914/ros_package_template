@@ -26,14 +26,16 @@
 #include <package_name/PackageNameConfig.h>
 #include <package_name/package_name.h>
 
-namespace package_name {
-
-struct PackageNameNodeParam {
+namespace package_name
+{
+struct PackageNameNodeParam
+{
   double update_rate;
   double th_timeout;
 };
 
-class PackageNameNode {
+class PackageNameNode
+{
 public:
   PackageNameNode();
 
@@ -50,8 +52,8 @@ private:
   std_msgs::Header::ConstPtr data_header;
 
   // Callback
-  void onData(const std_msgs::Float32::ConstPtr &msg);
-  void onHeader(const std_msgs::Header::ConstPtr &msg);
+  void onData(const std_msgs::Float32::ConstPtr & msg);
+  void onHeader(const std_msgs::Header::ConstPtr & msg);
 
   // Publisher
   ros::Publisher pub_data_;
@@ -60,14 +62,14 @@ private:
   ros::Timer timer_;
   bool isDataReady();
   bool isDataTimeout();
-  void onTimer(const ros::TimerEvent &event);
+  void onTimer(const ros::TimerEvent & event);
 
   // Parameter
   PackageNameNodeParam node_param_;
   PackageNameParam core_param_;
 
   // Dynamic Reconfigure
-  void onConfig(const PackageNameConfig &config, const uint32_t level);
+  void onConfig(const PackageNameConfig & config, const uint32_t level);
   dynamic_reconfigure::Server<PackageNameConfig> dynamic_reconfigure_;
 
   // Core
@@ -79,4 +81,4 @@ private:
   // diagnostic_updater::Updater diagnostic_updater_;
   // void checkError(diagnostic_updater::DiagnosticStatusWrapper & stat);
 };
-} // namespace package_name
+}  // namespace package_name

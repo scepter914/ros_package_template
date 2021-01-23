@@ -16,14 +16,15 @@
 
 #include <package_name/package_name.h>
 
-namespace package_name {
+namespace package_name
+{
+void PackageName::setParam(const PackageNameParam & param) { param_ = param; }
 
-void PackageName::setParam(const PackageNameParam &param) { param_ = param; }
-
-PackageNameOutput PackageName::update(const PackageNameInput &param) {
+PackageNameOutput PackageName::update(const PackageNameInput & param)
+{
   PackageNameOutput output{};
-  output.output_hoge = 1.0f;
+  output.output_hoge.data = 1.0f;
   return output;
 }
 
-} // namespace package_name
+}  // namespace package_name

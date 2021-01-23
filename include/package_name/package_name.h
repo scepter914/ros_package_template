@@ -18,27 +18,31 @@
 
 #include <std_msgs/Float32.h>
 
-namespace package_name {
-
-struct PackageNameParam {
+namespace package_name
+{
+struct PackageNameParam
+{
   float param_hoge;
 };
 
-struct PackageNameInput {
+struct PackageNameInput
+{
   std_msgs::Float32::ConstPtr input_hoge;
 };
 
-struct PackageNameOutput {
-  float output_hoge;
+struct PackageNameOutput
+{
+  std_msgs::Float32 output_hoge;
 };
 
-class PackageName {
+class PackageName
+{
 public:
-  void setParam(const PackageNameParam &param);
-  PackageNameOutput update(const PackageNameInput &input);
+  void setParam(const PackageNameParam & param);
+  PackageNameOutput update(const PackageNameInput & input);
 
 private:
   PackageNameParam param_;
 };
 
-} // namespace package_name
+}  // namespace package_name
