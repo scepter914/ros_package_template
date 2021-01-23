@@ -58,7 +58,7 @@ bool PackageNameNode::isDataReady() {
 
 bool PackageNameNode::isDataTimeout() {
   const auto now = ros::Time::now();
-  const auto time_diff = data_header.stamp - now;
+  const auto time_diff = data_header->stamp - now;
   if (time_diff.toSec() > node_param_.th_timeout) {
     ROS_WARN_THROTTLE(1.0, "pose is timeout...");
     return true;

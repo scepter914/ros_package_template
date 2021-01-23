@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <std_msgs/Float32.h>
+
 namespace package_name {
 
 struct PackageNameParam {
@@ -23,7 +25,7 @@ struct PackageNameParam {
 };
 
 struct PackageNameInput {
-  float input_hoge;
+  std_msgs::Float32::ConstPtr input_hoge;
 };
 
 struct PackageNameOutput {
