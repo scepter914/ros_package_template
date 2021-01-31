@@ -23,7 +23,9 @@ void PackageName::setParam(const PackageNameParam & param) { param_ = param; }
 PackageNameOutput PackageName::update(const PackageNameInput & param)
 {
   PackageNameOutput output{};
-  output.output_hoge.data = 1.0f;
+  output.output_hoge_msg.data.resize(2);
+  output.output_hoge_msg.data.at(0) = 1.0f;
+  output.output_hoge_msg.data.at(1) = 2.0f;
   return output;
 }
 

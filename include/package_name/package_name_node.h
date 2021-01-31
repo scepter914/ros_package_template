@@ -73,8 +73,8 @@ private:
   dynamic_reconfigure::Server<PackageNameConfig> dynamic_reconfigure_;
 
   // Core
-  PackageNameInput input_;
-  PackageNameOutput output_;
+  PackageNameInput input;
+  PackageNameOutput output;
   std::unique_ptr<PackageName> package_name_;
 
   // Diagnostic Updater

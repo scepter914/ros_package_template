@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #include <package_name/package_name_node.h>
 
 namespace package_name
@@ -79,8 +80,13 @@ void PackageNameNode::onTimer(const ros::TimerEvent & event)
   if (isDataTimeout()) {
     return;
   }
-  input_.input_hoge = data_hoge;
+  input_.input_hoge_msg = data_hoge;
   output_ = package_name_->update(input_);
+  if (output_->output_hoge_msg.data.empty()){
+    ROS_INFO("Output_hoge_msg.data is empty");
+  } else {
+    output_->output_hoge_msg.pubslish(pub_data_);
+  }
 }
 
 void PackageNameNode::onConfig(const PackageNameConfig & config, const uint32_t level)

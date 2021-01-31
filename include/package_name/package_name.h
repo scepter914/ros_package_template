@@ -17,6 +17,7 @@
 #pragma once
 
 #include <std_msgs/Float32.h>
+#include <std_msgs/Float32MultiArray.h>
 
 namespace package_name
 {
@@ -27,12 +28,12 @@ struct PackageNameParam
 
 struct PackageNameInput
 {
-  std_msgs::Float32::ConstPtr input_hoge;
+  std_msgs::Float32::ConstPtr input_hoge_msg;
 };
 
 struct PackageNameOutput
 {
-  std_msgs::Float32 output_hoge;
+  std_msgs::Float32MultiArray::ConstPtr output_hoge_msg;
 };
 
 class PackageName
