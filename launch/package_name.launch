@@ -1,19 +1,13 @@
 <launch>
   <arg name="input/topic_name" default="" />
-
   <arg name="output/topic_name" default="" />
-
   <arg name="param_name" default="" />
-
-  <arg name="config_file" default="$(find package_name)/config/package_name.yaml" />
+  <arg name="package_name_config" default="$(find package_name)/config/package_name.yaml" />
 
   <node pkg="package_name" type="package_name_node" name="package_name_node" output="screen">
     <remap from="~input/topic_name" to="$(arg input/topic_name)"/>
-
     <remap from="~output/topic_name" to="$(arg output/topic_name)"/>
-
-    <rosparam command="load" file="$(arg config_file)" />
-
+    <rosparam command="load" file="$(arg package_name_config)" />
     <param name="param_name" value="$(arg param_name)"/>
   </node>
 </launch>
