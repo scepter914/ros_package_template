@@ -85,7 +85,7 @@ void PackageNameNode::onTimer(const ros::TimerEvent & event)
   if (output_->output_hoge_msg.data.empty()){
     ROS_INFO("Output_hoge_msg.data is empty");
   } else {
-    output_->output_hoge_msg.pubslish(pub_data_);
+    output_->output_hoge_msg.publish(pub_data_);
   }
 }
 
