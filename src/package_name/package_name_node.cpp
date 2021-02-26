@@ -28,7 +28,7 @@ PackageNameNode::PackageNameNode()
   private_nh_.param("param_hoge", core_param_.param_hoge, 0.1f);
 
   // Dynamic Reconfigure
-  dynamic_reconfigure_.setCallback(boost::bind(&PackageNameNode::onConfig, this, _1, _2));
+  // dynamic_reconfigure_.setCallback(boost::bind(&PackageNameNode::onConfig, this, _1, _2));
 
   // Core
   package_name_ = std::make_unique<PackageName>();
@@ -38,7 +38,7 @@ PackageNameNode::PackageNameNode()
   sub_data_ = private_nh_.subscribe("input/topic_name", 1, &PackageNameNode::onData, this);
 
   // Publisher
-  pub_data_ = private_nh_.advertise<std_msgs::Float32>("output/topic_name", 1);
+  pub_data_ = private_nh_.advertise<std_msgs::Float32MultiArray>("output/topic_name", 1);
 
   // Diagnostic Updater
   // diagnostic_updater_.setHardwareID("package_name");
@@ -68,7 +68,7 @@ bool PackageNameNode::isDataTimeout()
   return false;
 }
 
-void PackageNameNode::onData(const std_msgs::Float32::ConstPtr & msg) { data_hoge = msg; }
+void PackageNameNode::onData(const std_msgs::Float32MultiArray::ConstPtr & msg) { data_hoge = msg; }
 
 void PackageNameNode::onHeader(const std_msgs::Header::ConstPtr & msg) { data_header = msg; }
 
@@ -82,13 +82,14 @@ void PackageNameNode::onTimer(const ros::TimerEvent & event)
   }
   input_.input_hoge_msg = data_hoge;
   output_ = package_name_->update(input_);
-  if (output_->output_hoge_msg.data.empty()){
+  if (output_.output_hoge_msg.data.empty()) {
     ROS_INFO("Output_hoge_msg.data is empty");
   } else {
-    output_->output_hoge_msg.publish(pub_data_);
+    pub_data_.publish(output_.output_hoge_msg);
   }
 }
 
+/*
 void PackageNameNode::onConfig(const PackageNameConfig & config, const uint32_t level)
 {
   core_param_.param_hoge = config.param_hoge;
@@ -96,7 +97,7 @@ void PackageNameNode::onConfig(const PackageNameConfig & config, const uint32_t 
     package_name_->setParam(core_param_);
   }
 }
-
+*/
 /*
 void PackageNameNode::checkError(
     diagnostic_updater::DiagnosticStatusWrapper &stat) {

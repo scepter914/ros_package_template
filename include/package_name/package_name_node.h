@@ -17,14 +17,17 @@
 
 #include <memory>
 
-#include <dynamic_reconfigure/server.h>
 #include <ros/ros.h>
-#include <std_msgs/Float32.h>
+#include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/Header.h>
+
+#include <package_name/package_name.h>
+
+// option
 // #include <diagnostic_updater/diagnostic_updater.h>
 
-#include <package_name/PackageNameConfig.h>
-#include <package_name/package_name.h>
+// #include <dynamic_reconfigure/server.h>
+// #include <package_name/PackageNameConfig.h>
 
 namespace package_name
 {
@@ -48,11 +51,11 @@ private:
   ros::Subscriber sub_data_;
 
   // Data Buffer
-  std_msgs::Float32::ConstPtr data_hoge;
+  std_msgs::Float32MultiArray::ConstPtr data_hoge;
   std_msgs::Header::ConstPtr data_header;
 
   // Callback
-  void onData(const std_msgs::Float32::ConstPtr & msg);
+  void onData(const std_msgs::Float32MultiArray::ConstPtr & msg);
   void onHeader(const std_msgs::Header::ConstPtr & msg);
 
   // Publisher
@@ -69,12 +72,12 @@ private:
   PackageNameParam core_param_;
 
   // Dynamic Reconfigure
-  void onConfig(const PackageNameConfig & config, const uint32_t level);
-  dynamic_reconfigure::Server<PackageNameConfig> dynamic_reconfigure_;
+  // void onConfig(const PackageNameConfig & config, const uint32_t level);
+  // dynamic_reconfigure::Server<PackageNameConfig> dynamic_reconfigure_;
 
   // Core
-  PackageNameInput input;
-  PackageNameOutput output;
+  PackageNameInput input_;
+  PackageNameOutput output_;
   std::unique_ptr<PackageName> package_name_;
 
   // Diagnostic Updater

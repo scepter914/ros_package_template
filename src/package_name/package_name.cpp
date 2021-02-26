@@ -20,12 +20,12 @@ namespace package_name
 {
 void PackageName::setParam(const PackageNameParam & param) { param_ = param; }
 
-PackageNameOutput PackageName::update(const PackageNameInput & param)
+PackageNameOutput PackageName::update(const PackageNameInput & input)
 {
   PackageNameOutput output{};
   output.output_hoge_msg.data.resize(2);
   output.output_hoge_msg.data.at(0) = 1.0f;
-  output.output_hoge_msg.data.at(1) = 2.0f;
+  output.output_hoge_msg.data.at(1) = input.input_hoge_msg->data.at(0);
   return output;
 }
 
