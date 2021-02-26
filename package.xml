@@ -3,10 +3,9 @@
   <name>package_name</name>
   <version>0.1.0</version>
   <description>The package_name package</description>
-  <author email="GIT_CONFIG_EMAIL">GIT_CONFIG_NAME</author>
-  <maintainer email="GIT_CONFIG_EMAIL">GIT_CONFIG_NAME</maintainer>
   <license>Apache 2</license>
-
+  <author email="st14.828soccer@gmail.com">scepter914</author>
+  <maintainer email="st14.828soccer@gmail.com">scepter914</maintainer>
   <buildtool_depend>catkin</buildtool_depend>
 
   <depend>diagnostic_updater</depend>

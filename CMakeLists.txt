@@ -4,14 +4,15 @@ project(package_name)
 add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
-  diagnostic_updater
-  dynamic_reconfigure
+  diagnostic_updater # diag
+  dynamic_reconfigure # dynamic_reconfigure
   roscpp
   std_msgs
 )
 # find_package(Boost REQUIRED)
 # find_package(Eigen3 REQUIRED)
 
+# dynamic_reconfigure
 generate_dynamic_reconfigure_options(
   cfg/PackageName.cfg
 )
@@ -49,7 +50,7 @@ target_link_libraries(package_name_node
 add_dependencies(package_name_node
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
   ${catkin_EXPORTED_TARGETS}
-  ${PROJECT_NAME}_gencfg
+  ${PROJECT_NAME}_gencfg # dynamic_reconfigure
 )
 
 # Install
