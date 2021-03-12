@@ -1,7 +1,7 @@
 <launch>
   <arg name="input/topic_name" default="" />
   <arg name="output/topic_name" default="" />
-  <arg name="debug/topic_name" default="" />
+  <arg name="debug/topic_name" default="debug/package_name/topic_name" />
   <arg name="param_name" default="" />
   <arg name="param_file" default="$(find package_name)/config/package_name.yaml" />
 
