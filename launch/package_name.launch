@@ -9,7 +9,7 @@
     <remap from="~input/topic_name" to="$(arg input/topic_name)"/>
     <remap from="~output/topic_name" to="$(arg output/topic_name)"/>
     <remap from="~debug/topic_name" to="$(arg debug/topic_name)"/>
-    <rosparam command="load" file="$(arg package_name_config)" />
+    <rosparam command="load" file="$(arg param_file)" />
     <param name="param_name" value="$(arg param_name)"/>
   </node>
 </launch>
