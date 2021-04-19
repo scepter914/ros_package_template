@@ -16,7 +16,7 @@
 
 #include <ros/ros.h>
 
-#include <package_name/package_name_node.h>
+#include <package_name_node/package_name_node.h>
 
 int main(int argc, char * argv[])
 {

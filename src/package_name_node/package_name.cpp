@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <package_name/package_name.h>
+#include <package_name_node/package_name.h>
 
 namespace package_name
 {

@@ -21,7 +21,7 @@
 #include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/Header.h>
 
-#include <package_name/package_name.h>
+#include <package_name_node/package_name.h>
 
 // option
 // #include <diagnostic_updater/diagnostic_updater.h>
