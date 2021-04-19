@@ -35,19 +35,23 @@ include_directories(
 
 # Target
 ## package_name_node
-add_executable(package_name_node
-  src/package_name/main.cpp
-  src/package_name/package_name.cpp
-  src/package_name/package_name_node.cpp
+set(PACKAGE_NAME_NODE
+  package_name_node
 )
 
-target_link_libraries(package_name_node
+add_executable(${PACKAGE_NAME_NODE}
+  src/${PACKAGE_NAME_NODE}/main.cpp
+  src/${PACKAGE_NAME_NODE}/package_name.cpp
+  src/${PACKAGE_NAME_NODE}/package_name_node.cpp
+)
+
+target_link_libraries(${PACKAGE_NAME_NODE}
   ${catkin_LIBRARIES}
   # ${Eigen3_LIBRARIES}
   # ${Boost_LIBRARIES}
 )
 
-add_dependencies(package_name_node
+add_dependencies(${PACKAGE_NAME_NODE}
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
   ${catkin_EXPORTED_TARGETS}
   ${PROJECT_NAME}_gencfg # dynamic_reconfigure
@@ -57,14 +61,14 @@ add_dependencies(package_name_node
 ## executables and libraries
 install(
   TARGETS
-    package_name_node
+    ${PACKAGE_NAME_NODE}
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
 ## project namespaced headers
-install(DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include/${PROJECT_NAME_NODE}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
